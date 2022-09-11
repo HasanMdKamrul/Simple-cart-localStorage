@@ -59,14 +59,17 @@ const getProductsFromLocalStorage = ()=>{
 const setLocalStorage = (productName,productQuantity)=>{
     const savedProducts = getProductsFromLocalStorage();
     
+    console.log(savedProducts[productName])
+    
     
     if (savedProducts[productName]) {
-        savedProducts[productName] = parseInt(savedProducts[productName]) + parseInt(productQuantity)
+        savedProducts[productName] = parseInt(savedProducts[productName]) + parseInt(productQuantity);
+        if (savedProducts[productName] < 0) {
+            return;
+        }
     } else{
         savedProducts[productName] = productQuantity;
     }
-
-    
 
     // ** set value to ls
 
