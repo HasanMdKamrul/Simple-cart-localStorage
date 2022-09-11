@@ -1,6 +1,10 @@
 // ** get the input field value
 
-const getInputFieldValue = id => document.getElementById(id).value;
+const getInputFieldValue = id => {
+    const inputValue = document.getElementById(id).value;
+    document.getElementById(id).value = ``;
+    return inputValue;
+}
 
 // ** addToCart() button functionality
 
