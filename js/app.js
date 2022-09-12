@@ -68,11 +68,14 @@ const setLocalStorage = (productName,productQuantity)=>{
     
     if (savedProducts[productName]) {
         savedProducts[productName] = parseInt(savedProducts[productName]) + parseInt(productQuantity);
-        if (savedProducts[productName] < 0) {
+        document.getElementById('stock-out').classList.add('hidden')
+        if (savedProducts[productName] <= 0) {
+            document.getElementById('stock-out').classList.remove('hidden')
             return;
         }
     } else{
         savedProducts[productName] = productQuantity;
+        document.getElementById('stock-out').classList.add('hidden')
     }
 
     // ** set value to ls
