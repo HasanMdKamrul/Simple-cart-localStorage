@@ -100,12 +100,22 @@ const displayFromLsToUi = ()=>{
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         ${nameProduct}
                         ${quantityProduct}
+                        <button onclick="deleteHandler('${nameProduct}')">Delete</button>
                     </th>
         
         `;
 
         displayConatiner.appendChild(tr)
     }
+};
+
+const deleteHandler = (nameProduct)=>{
+    const savedProducts = getProductsFromLocalStorage();
+    
+    delete savedProducts[nameProduct]
+
+    localStorage.setItem('allProducts',JSON.stringify(savedProducts));
+    displayFromLsToUi()
 }
 
 displayFromLsToUi()
